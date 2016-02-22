@@ -76,7 +76,6 @@ scales = {
 	},
 }
 
-
 def calculate_scale(direction, root, scale):
 
 	s_list = [root]
@@ -94,7 +93,6 @@ def calculate_scale(direction, root, scale):
 
 	return s_list
 
-
 def calculate_note_scales(direction,root):
 
 	dict_scales = {}
@@ -104,8 +102,6 @@ def calculate_note_scales(direction,root):
 
 	return dict_scales
 
-
-
 def map_scales(direction):
 
 	s_map = {}
@@ -114,7 +110,6 @@ def map_scales(direction):
 		s_map[note] = calculate_note_scales(direction, note)
 
 	return s_map
-
 
 def scale_detector():
 	
@@ -142,11 +137,9 @@ how it works:
 			direction = '#' if any('#' in note for note in user_notes) else 'b'
 
 		s_map = map_scales(direction)
-		from pprint import pprint
-		pprint(s_map)
+
 		for root, scales in s_map.items():
 			for scale in scales.keys():
-				print '{0} - {1}'.format(set(user_notes),set(scales[scale]))
 				if set(user_notes).issubset(set(scales[scale])):
 					final_list.append('{0} {1}\n'.format(root, scale))
 
